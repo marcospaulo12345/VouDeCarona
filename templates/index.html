@@ -14,12 +14,6 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
-	<!--<nav class="navbar navbar-light bg-light">
-	  	<a class="navbar-brand" href="#">
-	    	<img src="{% static 'imagens/carro.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-	    	VouDeCarona
-	 	</a>
-	</nav>-->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  	<a class="navbar-brand" href="#">
 	    	<img src="{% static 'imagens/carro.png' %}" width="50" height="50" class="d-inline-block align-left" alt="">
@@ -47,25 +41,29 @@
 		</div>
 	</nav>
 	<div id="centro">
+		<h1><label>Está a procura de uma carona?</label></h1>
+		<h2>Aqui voçê encontra sua carona</h2>
+		<h2>Procurar uma carona</h2>
+
 		<form>
-		  	<div class="form-row">
-		   		<div class="col">
-		      		<input type="text" class="form-control" placeholder="Origem">
-		    	</div>
-		    	<div class="col">
-		      		<input type="text" class="form-control" placeholder="Destino">
-		    	</div>
-		    	<div class="col">
-		      		<input type="date" class="form-control">
-		    	</div>
-		    	<div>
-		    		<a href="#" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">Procurar</a>
-		    	</div>
-		  	</div>
+		  <div class="form-row align-center">
+		    <div class="col-auto">
+		      <input type="text" class="form-control" id="inlineFormInput" placeholder="Origem">
+		    </div>
+		    <div class="col-auto">
+		      <input type="text" class="form-control" id="inlineFormInput" placeholder="Destino">
+		    </div>
+		    <div class="col-auto">
+		      <input type="date" class="form-control" id="inlineFormInput">
+		    </div>
+		    <div class="col-auto">
+		      <button type="submit" class="btn btn-secondary btn-lg">Procurar</button>
+		    </div>
+		  </div>
 		</form>
 	</div>
-	<footer>
-		rodapé
+	<footer class="footer navbar-fixed-bottom">
+		
 	</footer>
 </body>
 </html>
