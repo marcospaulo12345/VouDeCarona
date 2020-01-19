@@ -38,3 +38,16 @@ h2 {
 #links {
 	padding-left: 50px;
 }
+
+#Origem {
+	background-color: #C0C0C0;
+	width: 450px;
+}
+#Destino {
+	background-color: #C0C0C0;
+	width: 450px;
+}
+#Data {
+	background-color: #C0C0C0;
+	width: 450px;
+}

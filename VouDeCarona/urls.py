@@ -21,5 +21,6 @@ from carona import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
+    path('procurar/', views.procurar, name='procurar'),
     path('', views.index),
 ]

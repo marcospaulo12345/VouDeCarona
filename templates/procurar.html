@@ -26,7 +26,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav ml-md-auto d-md-flex">
 		      	<li class="nav-item">
-		        	<a class="nav-link" href="{% url 'procurar' %}">Procurar</a>
+		        	<a class="nav-link" href="#">Procurar</a>
 		      	</li>
 		      	<li class="nav-item">
 		        	<a class="nav-link" href="#">Ofertar Carona</a>
@@ -40,27 +40,33 @@
 		    </ul>
 		</div>
 	</nav>
-	<div id="centro">
-		<h1><label>Está a procura de uma carona?</label></h1>
-		<h2>Aqui voçê encontra sua carona</h2>
-		<h2>Procurar uma carona</h2>
+	<div class="container text-center mt-5 mb-5">
+		<h3 class="ml-5">Procurar uma carona.</h3>
+	    <form action=""  method="POST" name="formulario"> 
 
-		<form>
-		  <div class="form-row align-center">
-		    <div class="col-auto">
-		      <input type="text" class="form-control" id="inlineFormInput" placeholder="Origem">
-		    </div>
-		    <div class="col-auto">
-		      <input type="text" class="form-control" id="inlineFormInput" placeholder="Destino">
-		    </div>
-		    <div class="col-auto">
-		      <input type="date" class="form-control" id="inlineFormInput">
-		    </div>
-		    <div class="col-auto">
-		      <button type="submit" class="btn btn-secondary btn-lg">Procurar</button>
-		    </div>
-		  </div>
-		</form>
+	        <div class="form-group">
+	            <div class="col-md-3 offset-md-3">
+	                <input type="text" id="Origem" class="form-control offset-md-3" placeholder="Origem">    
+	            </div>
+	        </div>
+
+	        <div class="form-group">
+	            <div class="col-md-3 offset-md-3">
+	                <input type="text" id="Destino" class="form-control offset-md-3" placeholder="Destino">    
+	            </div>
+	        </div>    
+
+	        <div class="form-group">
+	            <div class="col-md-3 offset-md-3">
+	                <input type="Date" id="Data" class="form-control offset-md-3">    
+	            </div>
+	        </div>
+	        <div class="form-group ml-5">
+	            <div class="col-md-6 offset-md-3">
+	                <button type="submit" class="btn btn-secondary btn-lg">Procurar</button>    
+	            </div>
+	        </div>
+	    </form> 
 	</div>
 	<footer class="page-footer font-small">
 
