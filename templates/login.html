@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/procurar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -59,23 +59,20 @@
 		</div>
 	</nav>
 	<div class="container" id="centro">
-		<h1>Procurar</h1>
-		<form class="mx-auto" action="submit" method="POST" style="max-width: 600px;">
+		<h1>Entrar</h1>
+		<form class="mx-auto" method="POST" style="max-width: 600px;">
 			{% csrf_token %}
 			<div class="form-group px-md-2">
-				<label>Origem</label>
-				<input type="text" name="origem" class="form-control form-control-lg" id="inlineFormInput" placeholder="Ex: Itainopolis Povoado Riachão" required>
-			</div> 
-			<div class="form-group px-md-2">
-				<label>Destino</label>
-				<input type="text" name="destino" class="form-control form-control-lg" id="inlineFormInput" placeholder="Ex: Picos Bairro Junco Centro" required>
-		    </div>
-		    <div class="form-group px-md-2">
-		    	<label>Data</label>
-			    <input type="date" name="data" class="form-control form-control-lg" id="inlineFormInput" required>
+				<input type="username" name="username" class="form-control form-control-lg" id="inlineFormInput" placeholder="Nome de Usuario">
 			</div>
 			<div class="form-group px-md-2">
-			    <button type="submit" class="btn btn-secondary btn-block btn-lg">Procurar</button>
+				<input type="password" name="password" class="form-control form-control-lg" id="inlineFormInput" placeholder="Senha">
+		    </div>
+			<div class="form-group px-md-2">
+			    <button type="submit" class="btn btn-secondary btn-block btn-lg">Entrar</button>
+			</div>
+			<div class="form-group px-md-2 text-center">
+				<a class="nav-link" href="{% url 'cadastro' %}">Cadastre-se</a>
 			</div>
 		</form>
 	</div>

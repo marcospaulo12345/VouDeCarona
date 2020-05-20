@@ -1,0 +1,15 @@
+h1 {
+	color: black;
+	text-align: center;
+}
+#resultCaronas {
+	max-width: 700px;
+	border: 1px solid;
+	border-color: #C0C0C0;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #aaaaaa;
+}
+#imgUser {
+  	border-radius: 50%;
+  	cursor: pointer;
+}

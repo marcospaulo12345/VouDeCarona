@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/procurar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/caronasEncontradas.css' %}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -58,27 +58,33 @@
 		    </ul>
 		</div>
 	</nav>
-	<div class="container" id="centro">
-		<h1>Procurar</h1>
-		<form class="mx-auto" action="submit" method="POST" style="max-width: 600px;">
-			{% csrf_token %}
-			<div class="form-group px-md-2">
-				<label>Origem</label>
-				<input type="text" name="origem" class="form-control form-control-lg" id="inlineFormInput" placeholder="Ex: Itainopolis Povoado Riachão" required>
-			</div> 
-			<div class="form-group px-md-2">
-				<label>Destino</label>
-				<input type="text" name="destino" class="form-control form-control-lg" id="inlineFormInput" placeholder="Ex: Picos Bairro Junco Centro" required>
-		    </div>
-		    <div class="form-group px-md-2">
-		    	<label>Data</label>
-			    <input type="date" name="data" class="form-control form-control-lg" id="inlineFormInput" required>
+	<div id="centro" class="container mt-3">
+		<h1>Caronas Encontradas</h1>
+		{% csrf_token %}
+
+		{% for carona in caronas %}
+		<a href="{% url 'detalhesCarona' carona.id_carona %}" style="text-decoration: none; color: black;">
+		  <div class="card mx-auto mb-3" id="resultCaronas">
+		  	<div class="row row-cols-2">
+			    <div class="col card-body">
+			      <p class="card-text">{{ carona.hora_saida }} - {{ carona.origem }}</p>
+			      <p class="card-text">{{ carona.hora_chegada }} - {{ carona.destino }}</p>
+			    </div>
+			    <div class="col mt-3">
+			    	<span class="mr-3" style="float: right;">R${{ carona.preco }}</span>
+			    </div>
 			</div>
-			<div class="form-group px-md-2">
-			    <button type="submit" class="btn btn-secondary btn-block btn-lg">Procurar</button>
+			<div class="card-footer">
+			    <a href="{% url 'perfilPublico' carona.usuario.user.id %}" class="row ml-1" style="text-decoration: none; color: black;">
+			     	<img src="{{ carona.usuario.imagem_cad.url }}" width="50" height="50" id="imgUser">
+			      	<p class="mt-2 ml-2 mb-3">{{ carona.usuario.user.first_name }}</p>
+			    </a>
 			</div>
-		</form>
+		  </div>
+		</a>
+		{% endfor %}
 	</div>
+
 	<footer class="footer mt-auto py-3">
 		<div class="container-fluid">
 		  <div class="row">

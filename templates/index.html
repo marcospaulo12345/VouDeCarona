@@ -3,18 +3,19 @@
 {% block content %}
 <!DOCTYPE html>
 <html>
-<head>
-	<title>VouDeCarona</title>
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>VouDeCarona</title>
+  </head>
+  <body>
+  	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  	<a class="navbar-brand" href="#">
 	    	<img src="{% static 'imagens/carro.png' %}" width="50" height="50" class="d-inline-block align-left" alt="">
 	    	VouDeCarona
@@ -29,80 +30,103 @@
 		        	<a class="nav-link" href="{% url 'procurar' %}">Procurar</a>
 		      	</li>
 		      	<li class="nav-item">
-		        	<a class="nav-link" href="#">Ofertar Carona</a>
+		        	<a class="nav-link" href="{% url 'ofertarCarona' %}">Ofertar Carona</a>
 		      	</li>
-		      	<li class="nav-item">
-		      		<a class="nav-link" href="#">Marcos Paulo</a>
-		      	</li>
-		      	<li>
-		      		<img src="{% static 'imagens/79953628_2577086955870087_6432427667152175104_n.jpg'%}" width="50" height="50">
-		      	</li>
+		      	{% csrf_token %}
+		      	{% if user.is_authenticated and user.is_superuser == False %}
+			      	<li class="nav-item">
+			      		<a class="nav-link" href="#">{{user.first_name}}</a>
+			      	</li>
+			      	<li>
+			      		<img src="{{ custon_user.imagem_cad.url }}" width="50" height="50" id="imgUser" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+			      		<div class="dropdown-menu dropdown-menu-lg-right">
+						    <button class="dropdown-item" type="button">Caronas Ofertadas</button>
+						    <button class="dropdown-item" type="button">Caronas Solicitadas</button>
+                    		<a class="dropdown-item" href="{% url 'cadastroCarro' %}">Torna-se Motoriista</a>
+						    <a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a>
+						    <button class="dropdown-item" type="button">Sair</button>
+						</div>
+			      	</li>
+			    {% else %}
+			    	<li class="nav-item">
+			        	<a class="nav-link" href="{% url 'cadastro' %}">Cadastre-se</a>
+			      	</li>
+			      	<li class="nav-item">
+			        	<a class="nav-link" href="{% url 'login' %}">Entrar</a>
+			      	</li>
+			    {% endif %}
+
 		    </ul>
 		</div>
 	</nav>
-	<div id="centro">
+	<div id="centro" class="container-fluid">
 		<h1><label>Está a procura de uma carona?</label></h1>
 		<h2>Aqui voçê encontra sua carona</h2>
 		<h2>Procurar uma carona</h2>
 
-		<form>
-		  <div class="form-row align-center">
-		    <div class="col-auto">
-		      <input type="text" class="form-control" id="inlineFormInput" placeholder="Origem">
-		    </div>
-		    <div class="col-auto">
-		      <input type="text" class="form-control" id="inlineFormInput" placeholder="Destino">
-		    </div>
-		    <div class="col-auto">
-		      <input type="date" class="form-control" id="inlineFormInput">
-		    </div>
-		    <div class="col-auto">
-		      <button type="submit" class="btn btn-secondary btn-lg">Procurar</button>
-		    </div>
-		  </div>
-		</form>
+		<div class="container">
+			<form class="mx-auto">
+			  <div class="form-row" id="form_row_index">
+			  	<div class="form-group col-sm px-md-2">
+				    <input type="text" class="form-control form-control-lg" id="inlineFormInput" placeholder="Origem">
+				</div>
+				<div class="form-group col-sm px-md-2">
+				    <input type="text" class="form-control form-control-lg" id="inlineFormInput" placeholder="Destino">
+			    </div>
+			    <div class="form-group col-sm px-md-2">
+				    <input type="date" class="form-control form-control-lg" id="inlineFormInput">
+				</div>
+				<div class="form-group col-sm px-md-2">
+				    <button type="submit" class="btn btn-secondary btn-block btn-lg">Procurar</button>
+				</div>
+			  </div>
+			</form>
+		</div>
 	</div>
-	<footer class="page-footer font-small">
 
-	  <div class="row">
+	<footer class="footer mt-auto py-3">
+		<div class="container-fluid">
+		  <div class="row">
+		      <div class="col mx-auto mt-3" id="links">
 
-	      <!-- Grid column -->
-	      <div class="col mx-auto mt-3" id="links">
+		        <ul class="list-unstyled">
+		          <li>
+		            <a href="#!" class="text-muted">Contado</a>
+		          </li>
+		          <li>
+		            <a href="#!" class="text-muted">Sobre</a>
+		          </li>
+		          <li>
+		            <a href="#!" class="text-muted">Ajuda?</a>
+		          </li>
+		        </ul>
 
-	        <ul class="list-unstyled">
-	          <li>
-	            <a href="#!" class="text-muted">Contado</a>
-	          </li>
-	          <li>
-	            <a href="#!" class="text-muted">Sobre</a>
-	          </li>
-	          <li>
-	            <a href="#!" class="text-muted">Ajuda?</a>
-	          </li>
-	        </ul>
+		      </div>
 
-	      </div>
-
-	      <div class="col mt-5">
-	      	<ul class="list-unstyled text-right mr-2">
-	      		<li>
-	      			<a href="#"><img src="{% static 'imagens/33702.png'%}" width="30" height="30"></a>
-	      			<img src="{% static 'imagens/25425.png'%}" width="30" height="30">
-	      			<img src="{% static 'imagens/Whatsapp-512.png'%}" width="30" height="30">
-	      		</li>
-	      	</ul>
-	      </div>
-	  </div>
+		      <div class="col mt-5">
+		      	<ul class="list-unstyled text-right mr-2">
+		      		<li>
+		      			<a href="#"><img src="{% static 'imagens/33702.png'%}" width="30" height="30"></a>
+		      			<img src="{% static 'imagens/25425.png'%}" width="30" height="30">
+		      			<img src="{% static 'imagens/Whatsapp-512.png'%}" width="30" height="30">
+		      		</li>
+		      	</ul>
+		      </div>
+		  </div>
+		</div>
 
 
 
-	  <!-- Copyright -->
-	  <div class="footer-copyright text-center py-1">© 2020 Copyright:
+	  <div class="footer-copyright text-center">© 2020 Copyright:
 	    <a href="http://127.0.0.1:8000/"> VouDeCarona</a>
 	  </div>
-	  <!-- Copyright -->
 
 	</footer>
-</body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
 </html>
 {% endblock %}

@@ -1,0 +1,19 @@
+#imgUser {
+  	border-radius: 50%;
+  	cursor: pointer;
+}
+#perfil {
+	border: 1px solid;
+	border-color: #C0C0C0;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #aaaaaa;
+	max-width: 700px;
+	height: 490px;
+}
+h1 {
+	color: black;
+	text-align: center;
+}
+#avaliacao:hover {
+	background-color: #808080;
+}

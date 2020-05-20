@@ -1,0 +1,18 @@
+h1 {
+	color: black;
+	text-align: center;
+}
+#col_esq {
+	border: 1px solid;
+	border-color: #C0C0C0;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #aaaaaa;
+}
+#titulo {
+	border-bottom: 2px solid;
+	border-color: #C0C0C0;
+}
+#imgUser {
+  	border-radius: 50%;
+  	cursor: pointer;
+}

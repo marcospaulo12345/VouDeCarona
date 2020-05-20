@@ -1,0 +1,42 @@
+h1 {
+	color: black;
+	text-align: center;
+}
+#col_esq {
+	border: 1px solid;
+	border-color: #C0C0C0;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #aaaaaa;
+}
+#titulo {
+	border-bottom: 2px solid;
+	border-color: #C0C0C0;
+}
+#imgUser {
+  	border-radius: 50%;
+  	cursor: pointer;
+}
+input[type='file']{
+	display: none;
+}
+#id_old_password {
+	border: 1px solid;
+	border-color: #C0C0C0;
+	border-radius: 5px;
+	width: 100%;
+	height: 40px;
+}
+#id_new_password1 {
+	border: 1px solid;
+	border-color: #C0C0C0;
+	border-radius: 5px;
+	width: 100%;
+	height: 40px;
+}
+#id_new_password2 {
+	border: 1px solid;
+	border-color: #C0C0C0;
+	border-radius: 5px;
+	width: 100%;
+	height: 40px;
+}

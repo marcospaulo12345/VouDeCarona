@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/procurar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ofertarCarona.css' %}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -59,26 +59,47 @@
 		</div>
 	</nav>
 	<div class="container" id="centro">
-		<h1>Procurar</h1>
-		<form class="mx-auto" action="submit" method="POST" style="max-width: 600px;">
+		<h1>Ofertar uma carona</h1>
+		<form method="POST" class="mx-auto" style="max-width: 600px;">
 			{% csrf_token %}
-			<div class="form-group px-md-2">
-				<label>Origem</label>
-				<input type="text" name="origem" class="form-control form-control-lg" id="inlineFormInput" placeholder="Ex: Itainopolis Povoado Riachão" required>
-			</div> 
-			<div class="form-group px-md-2">
-				<label>Destino</label>
-				<input type="text" name="destino" class="form-control form-control-lg" id="inlineFormInput" placeholder="Ex: Picos Bairro Junco Centro" required>
-		    </div>
-		    <div class="form-group px-md-2">
+		  <div class="form-group">
+		  	<label>Origem</label>
+		    <input type="text" name="origem" class="form-control" id="inputAddress" placeholder="Ex: Itainopolis Povoado Riachão">
+		  </div>
+		  <div class="form-group">
+		  	<label>Destino</label>
+		    <input type="text" name="destino" class="form-control" id="inputAddress2" placeholder="Ex: Picos Bairro Junco Centro">
+		  </div>
+		  <div class="form-row">
+		    <div class="form-group col-md-6">
 		    	<label>Data</label>
-			    <input type="date" name="data" class="form-control form-control-lg" id="inlineFormInput" required>
-			</div>
-			<div class="form-group px-md-2">
-			    <button type="submit" class="btn btn-secondary btn-block btn-lg">Procurar</button>
+		      <input type="Date" name="data" id="form_Data" class="form-control">
+		    </div>
+		    <div class="form-group col-md-4">
+		    	<label>Numero de Passageiros</label>
+		      <input type="text" name="num_passageiros" id="form_num" class="form-control" placeholder="Ex: 4">
+		    </div>
+		    <div class="form-group col-md-2">
+		    	<label>Preço</label>
+		      <input type="text" name="preco" id="form_preco" class="form-control" placeholder="Preço">
+		    </div>
+		  </div>
+		  <div class="form-row">
+		    <div class="form-group col-md-6">
+		    	<label>horario de saida</label>
+		      <input type="time" name="hora_saida" id="form_num" class="form-control" placeholder="Horario de Partida">
+		    </div>
+		    <div class="form-group col-md-6">
+		    	<label>horario de chegada</label>
+		      <input type="time" name="hora_chegada" id="form_preco" class="form-control" placeholder="Estimativa de Chegada">
+		    </div>
+		  </div>
+		  <div class="form-group">
+			    <button type="submit" class="btn btn-secondary btn-block btn-lg">Ofertar</button>
 			</div>
 		</form>
 	</div>
+
 	<footer class="footer mt-auto py-3">
 		<div class="container-fluid">
 		  <div class="row">

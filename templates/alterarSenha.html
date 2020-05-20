@@ -1,0 +1,128 @@
+{% load staticfiles %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/perfil.css' %}">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>VouDeCarona</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'imagens/carro.png' %}" width="50" height="50" class="d-inline-block align-left" alt="">
+        VouDeCarona
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-md-auto d-md-flex">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'procurar' %}">Procurar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ofertarCarona' %}">Ofertar Carona</a>
+            </li>
+            {% csrf_token %}
+            {% if user.is_authenticated and user.is_superuser == False %}
+                <li class="nav-item">
+                  <a class="nav-link" href="#">{{user.first_name}}</a>
+                </li>
+                <li>
+                  <img src="{{ custon_user.imagem_cad.url }}" width="50" height="50" id="imgUser" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                  <div class="dropdown-menu dropdown-menu-lg-right">
+                  <button class="dropdown-item" type="button">Caronas Ofertadas</button>
+                  <button class="dropdown-item" type="button">Caronas Solicitadas</button>
+                  <a class="dropdown-item" href="{% url 'cadastroCarro' %}">Torna-se Motoriista</a>
+                  <a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a>
+                  <button class="dropdown-item" type="button">Sair</button>
+              </div>
+                </li>
+            {% else %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'cadastro' %}">Cadastre-se</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Entrar</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+  </nav>
+
+  <div class="container" id="centro">
+      <h1>Alterar Senha</h1>
+      <form action="{% url 'alteraSenha' %}" method="POST" class="mx-auto mt-3" style="max-width: 300px;">
+          <div class="form-group">
+            <label>Senha Antiga</label>
+            {{ form.old_password }}
+          </div>
+          <div class="form-group">
+            <label>Senha Nova</label>
+            {{ form.new_password1 }}
+          </div>
+          <div class="form-group">
+            <label>Confirmar Senha</label>
+            {{ form.new_password2 }}
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-dark btn-lg btn-block">Altera Senha?</button>
+          </div>
+      </form>
+  </div>
+
+  <footer class="footer mt-auto py-3">
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col mx-auto mt-3" id="links">
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!" class="text-muted">Contado</a>
+              </li>
+              <li>
+                <a href="#!" class="text-muted">Sobre</a>
+              </li>
+              <li>
+                <a href="#!" class="text-muted">Ajuda?</a>
+              </li>
+            </ul>
+
+          </div>
+
+          <div class="col mt-5">
+            <ul class="list-unstyled text-right mr-2">
+              <li>
+                <a href="#"><img src="{% static 'imagens/33702.png'%}" width="30" height="30"></a>
+                <img src="{% static 'imagens/25425.png'%}" width="30" height="30">
+                <img src="{% static 'imagens/Whatsapp-512.png'%}" width="30" height="30">
+              </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright text-center">© 2020 Copyright:
+      <a href="http://127.0.0.1:8000/"> VouDeCarona</a>
+    </div>
+
+  </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/teste.js' %}" ></script>
+  </body>
+</html>
+{% endblock %}

@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/procurar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ofertarCarona.css' %}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -59,26 +59,28 @@
 		</div>
 	</nav>
 	<div class="container" id="centro">
-		<h1>Procurar</h1>
-		<form class="mx-auto" action="submit" method="POST" style="max-width: 600px;">
+		<h1>Cadastrar Carro</h1>
+		<form method="POST" class="mx-auto" style="max-width: 600px;" enctype="multipart/form-data">
 			{% csrf_token %}
-			<div class="form-group px-md-2">
-				<label>Origem</label>
-				<input type="text" name="origem" class="form-control form-control-lg" id="inlineFormInput" placeholder="Ex: Itainopolis Povoado Riachão" required>
-			</div> 
-			<div class="form-group px-md-2">
-				<label>Destino</label>
-				<input type="text" name="destino" class="form-control form-control-lg" id="inlineFormInput" placeholder="Ex: Picos Bairro Junco Centro" required>
-		    </div>
-		    <div class="form-group px-md-2">
-		    	<label>Data</label>
-			    <input type="date" name="data" class="form-control form-control-lg" id="inlineFormInput" required>
-			</div>
-			<div class="form-group px-md-2">
-			    <button type="submit" class="btn btn-secondary btn-block btn-lg">Procurar</button>
+		  <div class="form-group">
+		  	<label>Modelo</label>
+		    <input type="text" name="modelo" class="form-control" id="inputAddress" placeholder="Ex: Fusca">
+		  </div>
+		  <div class="form-group">
+		  	<label>Ano</label>
+		    <input type="text" name="ano" class="form-control" id="inputAddress2" placeholder="Ex: 1888">
+		  </div>
+		  <div class="form-group">
+		  	<label>Foto do Carro</label>
+		    <input type="file" name="imagem_carro" class="form-control" widget='ClearableFileInput' id="inputAddress2">
+		  </div>
+		  <div class="form-group">
+		  	<!--<input type='button' value='Voltar' onclick='history.go(-1)' />-->
+			    <button type="submit" class="btn btn-secondary btn-block btn-lg">Cadastrar</button>
 			</div>
 		</form>
 	</div>
+
 	<footer class="footer mt-auto py-3">
 		<div class="container-fluid">
 		  <div class="row">

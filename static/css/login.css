@@ -1,0 +1,13 @@
+h1 {
+	color: black;
+	text-align: center;
+	padding-bottom: 20px;
+}
+#centro{
+	padding-top: 3%;
+	padding-bottom: 3%;
+}
+#imgUser {
+  	border-radius: 50%;
+  	cursor: pointer;
+}
